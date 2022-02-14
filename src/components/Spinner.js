@@ -27,6 +27,10 @@ STEP 2:
   is falsy, the one on the left becomes the value of the whole line. It's a neat little trick to render
   a React element (in this case the spinner) conditionally: only if the variable on the left is truthy.
 
+  const values = true;
+
+  values && 'casey';
+
   Replace the hard-coded 'true' with the variable that keeps track of whether spinner is on or not.
 
 STEP 3:
@@ -45,21 +49,17 @@ const [spinnerOn, setSpinnerOn] = useState(true);
 
   const toggleSpinner = () => {
   /* STEP 4 */
-  if(spinnerOn === true) {
-    setSpinnerOn
-  } else {
-    setSpinnerOn
-  }
+  setSpinnerOn(!spinnerOn);
   };
 
   return (
     <div className='widget-spinner container'>
       <h2>Spinner</h2>
       {
-        {spinnerOn} && <div id='spinner' className='spinner'>--+--</div> /* STEP 2 */
+        spinnerOn && <div id='spinner' className='spinner'>--+--</div> /* STEP 2 */
       }
       <button id='toggleSpinner' onClick={toggleSpinner}>
-        {spinnerOn ? 'Hide Spinner': 'Show Spinner'} {/* STEP 3 */}
+        {spinnerOn ? 'Hide': 'Show'} Spinner {/* STEP 3 */}
       </button>
     </div>
   );
